@@ -8,6 +8,14 @@ import ReusableForm from './Components/ReusableForm/ReusableForm'
 
 function App() {
 
+  const handleSignUpSubmit = data => {
+    // e.preventDefault();
+    console.log('Sign Up', data)
+  }
+  const handleUpdateSubmit = data => {
+    console.log('Updata Profile,', data);
+  }
+
 
   return (
     <>
@@ -17,7 +25,12 @@ function App() {
       <StateFullForm></StateFullForm> */}
       {/* <RefForm></RefForm> */}
       {/* <HookForm></HookForm> */}
-      <ReusableForm></ReusableForm>
+      <ReusableForm handleSubmit={handleSignUpSubmit} formTitle={'Log in'}><div> <h2>Sigh Up</h2>
+        <p>Please Sign up right now</p></div></ReusableForm>
+      <ReusableForm handleSubmit={handleUpdateSubmit} formTitle={'Profile Update'} submitBtnText={'Update'}>
+        <div><h2>Profile Update</h2>
+          <p>Always keep your profile updated</p></div>
+      </ReusableForm>
     </>
   )
 }

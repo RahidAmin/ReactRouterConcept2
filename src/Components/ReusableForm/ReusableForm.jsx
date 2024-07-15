@@ -1,12 +1,20 @@
 import React from 'react';
 
-const ReusableForm = () => {
+const ReusableForm = ({ formTitle, handleSubmit, submitBtnText = 'submit', children }) => {
 
-    const handleSubmit = e => {
+    const handleLocalSubmit = e => {
         e.preventDefault();
+        const data = {
+            name: e.target.name.value,
+            email: e.target.email.value,
+            password: e.target.password.value,
+        }
+        handleSubmit(data);
     }
+
     return (
         <div>
+            {children}
             <form onSubmit={handleSubmit}>
                 <input type="text" name='name' />
                 <br />
@@ -14,7 +22,7 @@ const ReusableForm = () => {
                 <br />
                 <input type="password" name='password' />
                 <br />
-                <input type="submit" value="Submit" />
+                <input type="submit" value={submitBtnText} />
             </form>
         </div>
     );
